@@ -78,6 +78,8 @@ export default function Produits() {
                   queryClient.invalidateQueries({ queryKey: ["produits"] });
                   queryClient.invalidateQueries({ queryKey: ["lots"] });
                   queryClient.invalidateQueries({ queryKey: ["dashboard"] });
+                  queryClient.invalidateQueries({ queryKey: ["bon_entrees"] });
+                  queryClient.invalidateQueries({ queryKey: ["bon_sorties"] });
                 })
               }
             />

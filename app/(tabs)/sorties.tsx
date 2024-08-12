@@ -129,6 +129,7 @@ export default function Bonsortie() {
                   queryClient.invalidateQueries({ queryKey: ["bon_sorties"] });
                   queryClient.invalidateQueries({ queryKey: ["produits"] });
                   queryClient.invalidateQueries({ queryKey: ["dashboard"] });
+                  queryClient.invalidateQueries({ queryKey: ["lots"] });
                 })
               }
               isDeleting={isDeleting}
