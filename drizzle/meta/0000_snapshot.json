@@ -1,0 +1,334 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "4016fc4d-ea3d-4bd7-ad4a-029bcb79efe9",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "BonEntree": {
+      "name": "BonEntree",
+      "columns": {
+        "id_bon_entree": {
+          "name": "id_bon_entree",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "date_entree": {
+          "name": "date_entree",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "BonSortie": {
+      "name": "BonSortie",
+      "columns": {
+        "id_bon_sortie": {
+          "name": "id_bon_sortie",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "date_sortie": {
+          "name": "date_sortie",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "Entree": {
+      "name": "Entree",
+      "columns": {
+        "id_entree": {
+          "name": "id_entree",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "id_produit": {
+          "name": "id_produit",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "id_bon_entree": {
+          "name": "id_bon_entree",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "qte_entree": {
+          "name": "qte_entree",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "id_lot": {
+          "name": "id_lot",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Entree_id_produit_Produit_id_produit_fk": {
+          "name": "Entree_id_produit_Produit_id_produit_fk",
+          "tableFrom": "Entree",
+          "tableTo": "Produit",
+          "columnsFrom": [
+            "id_produit"
+          ],
+          "columnsTo": [
+            "id_produit"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "Entree_id_bon_entree_BonEntree_id_bon_entree_fk": {
+          "name": "Entree_id_bon_entree_BonEntree_id_bon_entree_fk",
+          "tableFrom": "Entree",
+          "tableTo": "BonEntree",
+          "columnsFrom": [
+            "id_bon_entree"
+          ],
+          "columnsTo": [
+            "id_bon_entree"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "Entree_id_lot_Lot_id_lot_fk": {
+          "name": "Entree_id_lot_Lot_id_lot_fk",
+          "tableFrom": "Entree",
+          "tableTo": "Lot",
+          "columnsFrom": [
+            "id_lot"
+          ],
+          "columnsTo": [
+            "id_lot"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "Lot": {
+      "name": "Lot",
+      "columns": {
+        "id_lot": {
+          "name": "id_lot",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "id_produit": {
+          "name": "id_produit",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "date_production": {
+          "name": "date_production",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "date_peremption": {
+          "name": "date_peremption",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "quantite_lot": {
+          "name": "quantite_lot",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Lot_id_produit_Produit_id_produit_fk": {
+          "name": "Lot_id_produit_Produit_id_produit_fk",
+          "tableFrom": "Lot",
+          "tableTo": "Produit",
+          "columnsFrom": [
+            "id_produit"
+          ],
+          "columnsTo": [
+            "id_produit"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "Produit": {
+      "name": "Produit",
+      "columns": {
+        "id_produit": {
+          "name": "id_produit",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "designation": {
+          "name": "designation",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "pu": {
+          "name": "pu",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "stock": {
+          "name": "stock",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "Sortie": {
+      "name": "Sortie",
+      "columns": {
+        "id_sortie": {
+          "name": "id_sortie",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "id_produit": {
+          "name": "id_produit",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "id_bon_sortie": {
+          "name": "id_bon_sortie",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "qte_sortie": {
+          "name": "qte_sortie",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "id_lot": {
+          "name": "id_lot",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "type_sortie": {
+          "name": "type_sortie",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Sortie_id_produit_Produit_id_produit_fk": {
+          "name": "Sortie_id_produit_Produit_id_produit_fk",
+          "tableFrom": "Sortie",
+          "tableTo": "Produit",
+          "columnsFrom": [
+            "id_produit"
+          ],
+          "columnsTo": [
+            "id_produit"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "Sortie_id_bon_sortie_BonSortie_id_bon_sortie_fk": {
+          "name": "Sortie_id_bon_sortie_BonSortie_id_bon_sortie_fk",
+          "tableFrom": "Sortie",
+          "tableTo": "BonSortie",
+          "columnsFrom": [
+            "id_bon_sortie"
+          ],
+          "columnsTo": [
+            "id_bon_sortie"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "Sortie_id_lot_Lot_id_lot_fk": {
+          "name": "Sortie_id_lot_Lot_id_lot_fk",
+          "tableFrom": "Sortie",
+          "tableTo": "Lot",
+          "columnsFrom": [
+            "id_lot"
+          ],
+          "columnsTo": [
+            "id_lot"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {}
+  }
+}
